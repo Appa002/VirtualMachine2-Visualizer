@@ -226,9 +226,9 @@ void write_char_replace(uint32_t line_index, int element, program_t *program){
     write_center_box_line("<enter>", 0, largest_string_size, 1, i++);
     write_center_box_top(largest_string_size, 1, i);
 
-    int x_corner = COLS/2 - (2 + largest_string_size/2);
+    int x_corner = COLS/2;
     int y_corner = LINES/2 - 2;
-    move(y_corner + 4, x_corner + 9);
+    move(y_corner + 4, x_corner);
     char out[1];
     get_input(out, 1);
 
@@ -252,14 +252,14 @@ void write_hex_replace(uint32_t line_index, int element, program_t *program){
     write_center_box_line("<enter>", 0, largest_string_size, 1, i++);
     write_center_box_top(largest_string_size, 1, i);
 
-    int x_corner = COLS/2 - (2 + largest_string_size/2);
+    int x_corner = COLS/2 - largest_string_size/2 + 1;
     int y_corner = LINES/2 - 2;
-    move(y_corner + 4, x_corner + 18 - 1);
+    move(y_corner + 4, x_corner);
     write_colored("0x", 0);
     attron(A_BOLD);
     char input_str[9];
     input_str[9] = 0;
-    get_input(input_str, 8);
+    get_input_with_exit(input_str, 8);
     attroff(A_BOLD);
 
     char* end_ptr;
@@ -288,9 +288,9 @@ void write_dec_replace(uint32_t line_index, int element, program_t *program){
     write_center_box_line("<enter>", 0, largest_string_size, 1, i++);
     write_center_box_top(largest_string_size, 1, i);
 
-    int x_corner = COLS/2 - (2 + largest_string_size/2);
+    int x_corner = COLS/2 - (largest_string_size / 2) + 1;
     int y_corner = LINES/2 - 2;
-    move(y_corner + 4, x_corner + 18);
+    move(y_corner + 4, x_corner);
     char input_str[11];
     input_str[11] = 0;
     get_input_with_exit(input_str, 10);
@@ -323,9 +323,9 @@ void write_float_replace(uint32_t line_index, int element, program_t *program){
     write_center_box_line("<enter>", 0, largest_string_size, 1, i++);
     write_center_box_top(largest_string_size, 1, i);
 
-    int x_corner = COLS/2 - (2 + largest_string_size/2);
+    int x_corner = COLS/2 - (largest_string_size / 2) + 1;
     int y_corner = LINES/2 - 2;
-    move(y_corner + 4, x_corner + 18);
+    move(y_corner + 4, x_corner);
     char input_str[21];
     input_str[21] = 0;
     get_input_with_exit(input_str, 20);
