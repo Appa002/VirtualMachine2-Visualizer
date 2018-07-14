@@ -122,9 +122,16 @@ void add_line(uint8_t opt_code, uint32_t insert_index, program_t** program){
     (*program)->line_amount++;
     (*program)->raw_size += line->line_raw_size;
 
+    if(insert_index == 0)
+        (*program)->lines[0]->line_address = 0;
+
    for(uint32_t i = insert_index; i < (*program)->line_amount; i++){
-       if(i - 1 < (*program)->line_amount)
-           (*program)->lines[i]->line_address = (*program)->lines[i - 1]->line_address + (*program)->lines[i - 1]->line_raw_size;
+       if((int)i - 1 >= 0){
+
+           (*program)->lines[i]->line_address =
+                   (*program)->lines[i - 1]->line_address + (*program)->lines[i - 1]->line_raw_size;
+
+       }
    }
 
 }
