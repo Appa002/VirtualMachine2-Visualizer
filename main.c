@@ -90,12 +90,12 @@ int main(int argc, char *argv[]) {
                 move_cursor_down(&scrolled_to_line_index, program, &y_pos, &x_pos);
                 break;
             case (KEY_RIGHT):
-                if(selected_line_index >= program->line_amount)
+                if (selected_line_index >= program->line_amount)
                     break;
                 column++;
                 break;
             case (KEY_LEFT):
-                if(selected_line_index >= program->line_amount)
+                if (selected_line_index >= program->line_amount)
                     break;
                 column--;
                 break;
@@ -130,11 +130,11 @@ int main(int argc, char *argv[]) {
                 write_keymap_line();
                 break;
             case ('b'):
-                if(selected_line_index >= program->line_amount)
+                if (selected_line_index >= program->line_amount)
                     break;
                 {
                     uint8_t opt = write_opt_select();
-                    add_line((uint8_t)opt, selected_line_index, &program);
+                    add_line((uint8_t) opt, selected_line_index, &program);
                     column = 0;
                     clear();
                     write_program(program, scrolled_to_line_index);
@@ -144,11 +144,15 @@ int main(int argc, char *argv[]) {
                 break;
 
             case ('a'):
-                if(selected_line_index >= program->line_amount)
+                if (selected_line_index >= program->line_amount && program->line_amount != 0)
                     break;
                 {
                     uint8_t opt = write_opt_select();
-                    add_line((uint8_t) opt, selected_line_index + 1, &program);
+                    if (program->line_amount != 0)
+                        add_line((uint8_t) opt, selected_line_index + 1, &program);
+                    else
+                        add_line((uint8_t) opt, 0, &program);
+
                     column = 0;
                     clear();
                     write_program(program, scrolled_to_line_index);
