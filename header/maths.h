@@ -53,4 +53,9 @@ float readIEEE754Float(uint32_t input){
     return (float)value;
 }
 
+uint32_t transformToIEEE754Float(float input){
+    // TODO: Make this work independent of internal C floating point representation
+    return *(uint32_t*)&input;
+}
+
 #endif //VM_VISUALIZER_MATHS_H

@@ -309,12 +309,44 @@ void write_dec_replace(uint32_t line_index, int element, program_t *program){
     refresh();
 }
 
+void write_float_replace(uint32_t line_index, int element, program_t *program){
+    WINDOW* saved_state = dupwin(stdscr);
+
+    char* text = "Enter your float:";
+
+    int largest_string_size = (int)strlen(text);
+    int i = 0;
+
+    write_center_box_top(largest_string_size, 1, i++);
+    write_center_box_line(text, 0, largest_string_size, 1, i++);
+    write_center_box_line("", 0, largest_string_size, 1, i++);
+    write_center_box_line("<enter>", 0, largest_string_size, 1, i++);
+    write_center_box_top(largest_string_size, 1, i);
+
+    int x_corner = COLS/2 - (2 + largest_string_size/2);
+    int y_corner = LINES/2 - 2;
+    move(y_corner + 4, x_corner + 18);
+    char input_str[21];
+    input_str[21] = 0;
+    get_input_with_exit(input_str, 20);
+    char* end_ptr;
+    float result = strtof(input_str, &end_ptr);
+    if (end_ptr == input_str) {
+        return;
+    }
+    overwrite(saved_state, stdscr);
+    replace_arg(line_index, element, program, transformToIEEE754Float(result));
+
+    refresh();
+}
+
 void write_replace_select(uint32_t line_index, int element, program_t *program){
     WINDOW* saved_state = dupwin(stdscr);
 
-    char* c = "0.) Replace with char.";
+    char* c =   "0.) Replace with char.";
     char* hex = "1.) Replace with hex number.";
     char* dec = "2.) Replace with decimal number.";
+    char* f =   "3.) Replace with float.";
 
     char* prompt = "Enter number or 'e' to exit.";
 
@@ -326,6 +358,7 @@ void write_replace_select(uint32_t line_index, int element, program_t *program){
     write_center_box_line(c, 0, largest_string_size, 1, i++);
     write_center_box_line(hex, 0, largest_string_size, 1, i++);
     write_center_box_line(dec, 0, largest_string_size, 1, i++);
+    write_center_box_line(f, 0, largest_string_size, 1, i++);
     write_center_box_line("", 0, largest_string_size, 1, i++);
     write_center_box_line(prompt, 0, largest_string_size, 1, i++);
 
@@ -345,6 +378,9 @@ void write_replace_select(uint32_t line_index, int element, program_t *program){
             break;
         case ('2'):
             write_dec_replace(line_index, element, program);
+            break;
+        case('3'):
+            write_float_replace(line_index, element, program);
             break;
         default:
             break;
