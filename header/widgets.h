@@ -257,11 +257,9 @@ void write_hex_replace(uint32_t line_index, int element, program_t *program){
     move(y_corner + 4, x_corner);
     write_colored("0x", 0);
     attron(A_BOLD);
-    char input_str[9];
-    input_str[9] = 0;
+    char input_str[9] = {0};
     get_input_with_exit(input_str, 8);
     attroff(A_BOLD);
-
     char* end_ptr;
     uint32_t result = (uint32_t)strtol(input_str, &end_ptr, 16);
     if (end_ptr == input_str) {
@@ -291,8 +289,7 @@ void write_dec_replace(uint32_t line_index, int element, program_t *program){
     int x_corner = COLS/2 - (largest_string_size / 2) + 1;
     int y_corner = LINES/2 - 2;
     move(y_corner + 4, x_corner);
-    char input_str[11];
-    input_str[11] = 0;
+    char input_str[11] = {0};
     get_input_with_exit(input_str, 10);
     char* end_ptr;
     uint32_t result = (uint32_t)strtol(input_str, &end_ptr, 10);
@@ -326,8 +323,7 @@ void write_float_replace(uint32_t line_index, int element, program_t *program){
     int x_corner = COLS/2 - (largest_string_size / 2) + 1;
     int y_corner = LINES/2 - 2;
     move(y_corner + 4, x_corner);
-    char input_str[21];
-    input_str[21] = 0;
+    char input_str[21] = {0};
     get_input_with_exit(input_str, 20);
     char* end_ptr;
     float result = strtof(input_str, &end_ptr);
@@ -406,8 +402,7 @@ uint8_t write_opt_select(){
     move(y_corner + 4, x_corner + 14);
     write_colored("0x", 0);
     attron(A_BOLD);
-    char input_str[3];
-    input_str[3] = 0;
+    char input_str[3] = {0};
     get_input(input_str, 2);
     attroff(A_BOLD);
 
