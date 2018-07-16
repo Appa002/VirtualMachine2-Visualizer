@@ -86,6 +86,11 @@ void delete_line(uint32_t line_index, program_t* program){
     for(int i = line_index; i < program->line_amount; i++){
         program->lines[i] = program->lines[i + 1];
     }
+    program->lines[0]->line_address = 0;
+    for(int i = 1; i < program->line_amount; i++){
+        program->lines[i]->line_address =
+                program->lines[i - 1]->line_address + program->lines[i - 1]->line_raw_size;
+    }
 }
 
 void add_line(uint8_t opt_code, uint32_t insert_index, program_t** program){
