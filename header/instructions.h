@@ -53,16 +53,16 @@ ADD_INSTRUCTION(readRegister7, 0);
 ADD_INSTRUCTION(readRegister8, 0);
 ADD_INSTRUCTION(readRegister9, 0);
 
-ADD_INSTRUCTION(setRegister0, 1);
-ADD_INSTRUCTION(setRegister1, 1);
-ADD_INSTRUCTION(setRegister2, 1);
-ADD_INSTRUCTION(setRegister3, 1);
-ADD_INSTRUCTION(setRegister4, 1);
-ADD_INSTRUCTION(setRegister5, 1);
-ADD_INSTRUCTION(setRegister6, 1);
-ADD_INSTRUCTION(setRegister7, 1);
-ADD_INSTRUCTION(setRegister8, 1);
-ADD_INSTRUCTION(setRegister9, 1);
+ADD_INSTRUCTION(setRegister0, 0);
+ADD_INSTRUCTION(setRegister1, 0);
+ADD_INSTRUCTION(setRegister2, 0);
+ADD_INSTRUCTION(setRegister3, 0);
+ADD_INSTRUCTION(setRegister4, 0);
+ADD_INSTRUCTION(setRegister5, 0);
+ADD_INSTRUCTION(setRegister6, 0);
+ADD_INSTRUCTION(setRegister7, 0);
+ADD_INSTRUCTION(setRegister8, 0);
+ADD_INSTRUCTION(setRegister9, 0);
 
 ADD_INSTRUCTION(setSize, 0)
 ADD_INSTRUCTION(move, 0)
