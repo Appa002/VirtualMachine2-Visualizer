@@ -196,11 +196,11 @@ void get_input_with_exit(char *out, uint32_t max_char) {
                 i = 0;
         }
         else{
-            if(i + 1 == max_char + 1)
-                return;
-            out[i] = (char)c;
-            i++;
-            x++;
+            if(i + 1 != max_char + 1){
+                out[i] = (char)c;
+                i++;
+                x++;
+            }
         }
 
         if(x < start_x)
