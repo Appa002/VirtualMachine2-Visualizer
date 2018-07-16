@@ -78,8 +78,12 @@ void write_representation_line(uint32_t line_index, program_t* program, uint32_t
     char instruction[256];
     char asFloat[256];
 
+    if(line->instruction_args[element] > 32 && line->instruction_args[element] < 127)
+        sprintf(c, "Char: %c", line->instruction_args[element]);
+    else
+        sprintf(c, "Char: n/a");
+
     sprintf(hex, "Hex: %#010x", line->instruction_args[element]);
-    sprintf(c, "Char: %c", line->instruction_args[element]);
     sprintf(udec, "Unsigned Dec: %u", line->instruction_args[element]);
     sprintf(sdec, "Signed Dec: %c%u", sign, line->instruction_args[element] & 0x7fff);
     sprintf(asFloat, "Float: %f", readIEEE754Float(line->instruction_args[element]));
