@@ -107,7 +107,11 @@ ADD_INSTRUCTION(return, 0)
 ADD_INSTRUCTION(int, 0)
 ADD_INSTRUCTION(halt, 0)
 ADD_INSTRUCTION(noop, 0)
-ADD_INSTRUCTION(out, 0)
+
+ADD_INSTRUCTION(unsignedOut, 0)
+ADD_INSTRUCTION(signedOut, 0)
+ADD_INSTRUCTION(floatOut, 0)
+ADD_INSTRUCTION(charOut, 0)
 
 uint8_t* error(uint8_t *ip, line_t *out){
     out->instruction_name = create_string("<undefined opcode>");
@@ -178,7 +182,12 @@ void register_instructions(instruction_t *opt) {
     REGISTER_INSTRUCTION(int, 0x10);
     REGISTER_INSTRUCTION(halt, 0x11);
     REGISTER_INSTRUCTION(noop, 0x12)
-    REGISTER_INSTRUCTION(out, 0x13)
+
+    REGISTER_INSTRUCTION(unsignedOut, 0x13)
+    REGISTER_INSTRUCTION(signedOut,   0x14)
+    REGISTER_INSTRUCTION(floatOut,    0x15)
+    REGISTER_INSTRUCTION(charOut,     0x16)
+
 }
 
 #endif //VIRTUAL_MACHIEN_INSTRUCTIONS_H
