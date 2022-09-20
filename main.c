@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <signal.h>
-#include <ncurses/curses.h>
+#include <ncurses.h>
 #include <locale.h>
 
 #include "header/instructions.h"

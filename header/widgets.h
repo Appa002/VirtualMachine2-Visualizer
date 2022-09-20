@@ -9,7 +9,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <signal.h>
-#include <ncurses/curses.h>
+#include <ncurses.h>
 #include <locale.h>
 #include <values.h>
 #include <errno.h>
